@@ -1,2 +1,2 @@
 # Signs :wave:
-AR app using hand tracking
+A hand tracking user interface with deep learning models
