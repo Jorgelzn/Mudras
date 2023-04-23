@@ -1,2 +1,2 @@
-# Signs
-AR app using handtracking
+# Signs :wave:
+AR app using hand tracking
