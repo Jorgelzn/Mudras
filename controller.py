@@ -19,12 +19,14 @@ classNames = f.read().split('\n')
 f.close()
 
 #timer for starting control
-for i in list(range(4))[::-1]:
-    print(i+1)
-    time.sleep(1)
+#for i in list(range(4))[::-1]:
+ #   print(i+1)
+  #xxxxxxxxxxxxxx  time.sleep(1)
 
 # Initialize the webcam for Hand Gesture Recognition Python project
 cap = cv2.VideoCapture(0)
+
+move_locker = "dummy"
 
 while True:
     # Read each frame from the webcam
@@ -68,22 +70,19 @@ while True:
          "peace":"z",
          "fist":"x",
          "thumbs up":"c",
-         "thumbs down":"a"
+         "thumbs down":"a",
+         "dummy":" "
     }
-    print(className)
-    if className in mapping:
-        if mapping[className]=="rock" or mapping[className]=="okay":
-            pyautogui.keyDown(mapping[className])
-        else:  
-            pyautogui.press(mapping[className])
 
-        print(mapping[className])
-    """ 
-    for key, value in mapping.items():
-         if className==key:
-                pyautogui.press(value)
-                print(key+" - "+value)
-    """   
+    if className in mapping:
+        if className!=move_locker:
+            pyautogui.keyUp(mapping[move_locker])
+            
+        pyautogui.keyDown(mapping[className])
+        move_locker=className
+    else:
+        pyautogui.keyUp(mapping[move_locker])
+
     #cv2.imshow("Output", frame)
     #if cv2.waitKey(1) == ord('q'):
         #break
